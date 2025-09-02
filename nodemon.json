@@ -1,0 +1,18 @@
+{
+  "watch": [
+    "main.cjs",
+    "preload.js"
+  ],
+  "ext": "cjs,js",
+  "ignore": [
+    "src/**/*",
+    "dist/**/*",
+    "node_modules/**/*"
+  ],
+  "exec": "electron .",
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "delay": 1000,
+  "restartable": "rs"
+}
