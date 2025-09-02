@@ -16,15 +16,15 @@ Ciphora 是一个开源、安全、跨平台的密码管理器，基于 Electron
 
 <div align="center">
 
-| 主界面 | 密码管理 |
+| 登录界面 | 密码管理 |
 |--------|----------|
-| <img src="./readme_res/d793f7c0-259d-4901-8a9a-3f428743a0ba.png" alt="主界面" width="300"> | <img src="./readme_res/38fe97b6-a6b3-4991-bc0a-6fc6fdf8ff9e.png" alt="密码管理" width="300"> |
-| 简洁直观的密码管理体验 | 直观的密码列表和操作界面 |
+| <img src="./readme_res/d793f7c0-259d-4901-8a9a-3f428743a0ba.png" alt="登录界面"> | <img src="./readme_res/41ae95d8-944c-48d6-b360-b5314f80b422.png" alt="密码管理"> |
+| 简洁直观的登录管理体验 | 直观的密码列表和操作界面 |
 
-| 设置界面 | 支持项目 |
+| 控制面板 | 设置界面 |
 |----------|----------|
-| <img src="./readme_res/e4cab2de-bcb0-4d33-865a-814290f05c9d.png" alt="设置界面" width="300"> | <img src="./readme_res/41ae95d8-944c-48d6-b360-b5314f80b422.png" alt="支持项目" width="300"> |
-| 丰富的配置选项和个性化设置 | 简洁的备份和导出功能 |
+|  <img src="./readme_res/e4cab2de-bcb0-4d33-865a-814290f05c9d.png" alt="支持项目"> |<img src="./readme_res/38fe97b6-a6b3-4991-bc0a-6fc6fdf8ff9e.png" alt="设置界面">  |
+| 简洁的备份和导出功能 | 丰富的配置选项和个性化设置 |
 
 </div>
 

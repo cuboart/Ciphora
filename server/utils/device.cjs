@@ -10,15 +10,22 @@ class DeviceManager {
             
             // 检查文件是否存在
             if (fs.existsSync(appIdPath)) {
-                const deviceId = await fs.promises.readFile(appIdPath, 'utf8');
-                if (deviceId && deviceId.trim()) {
-                    return deviceId.trim();
+                try {
+                    const deviceId = await fs.promises.readFile(appIdPath, 'utf8');
+                    if (deviceId && deviceId.trim()) {
+                        return deviceId.trim();
+                    }
+                } catch (readError) {
+                    console.warn('读取设备ID文件失败，将创建新的:', readError.message);
                 }
             }
             
             // 如果文件不存在或为空，创建新的设备ID
             const deviceId = this.generateUUID();
-            await this.saveDeviceIdAsync(appIdPath, deviceId);
+            // 异步保存，不等待完成
+            this.saveDeviceIdAsync(appIdPath, deviceId).catch((error) => {
+                console.error('保存设备ID失败:', error);
+            });
             return deviceId;
         } catch (error) {
             console.error('异步获取设备ID失败:', error);

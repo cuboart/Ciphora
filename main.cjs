@@ -11,48 +11,74 @@ let ipcHandler;
 let windowManager;
 let appStateManager;
 
+// 启动性能监控
+const startupTiming = {
+    start: Date.now(),
+    stages: {}
+};
+
+function logTiming(stage) {
+    const now = Date.now();
+    const elapsed = now - startupTiming.start;
+    startupTiming.stages[stage] = elapsed;
+    console.log(`⏱️  ${stage}: ${elapsed}ms`);
+}
+
 // ==================== 应用生命周期管理 ====================
 class AppLifecycleManager {
     static async initialize() {
-        console.log('应用启动中...');
+        logTiming('应用启动开始');
         
         try {
-            // 异步初始化服务
-            await this.initializeServices();
+            // 立即创建窗口，不等待服务完全初始化
+            logTiming('开始创建窗口');
+            windowManager = new WindowManager();
+            const mainWindow = windowManager.createMainWindow();
+            logTiming('窗口创建完成');
+            
+            // 并行初始化服务
+            const initPromise = this.initializeServicesAsync();
             
             // 注册所有IPC处理器
+            logTiming('开始注册IPC处理器');
+            ipcHandler = new IPCHandler();
             ipcHandler.registerAll();
-            
-            // 创建主窗口
-            windowManager.createMainWindow();
+            logTiming('IPC处理器注册完成');
             
             // 设置应用事件处理
             this.setupAppEvents();
             
-            console.log('应用启动完成');
+            // 等待服务初始化完成（但不阻塞窗口显示）
+            initPromise.then(() => {
+                logTiming('服务初始化完成');
+                console.log('🚀 应用启动完成，总耗时:', Date.now() - startupTiming.start, 'ms');
+                console.log('📊 启动阶段详情:', startupTiming.stages);
+            }).catch((error) => {
+                console.error('服务初始化失败:', error);
+                logTiming('服务初始化失败');
+            });
+            
         } catch (error) {
             console.error('应用启动失败:', error);
+            logTiming('应用启动失败');
             // 即使初始化失败，也要创建窗口让用户知道有问题
             this.createErrorWindow();
         }
     }
 
-    static async initializeServices() {
-        console.log('开始初始化服务...');
+    static async initializeServicesAsync() {
+        logTiming('开始初始化服务');
         
         try {
-            // 初始化窗口管理器
-            windowManager = new WindowManager();
-            console.log('窗口管理器初始化完成');
-            
             // 初始化IPC处理器
             ipcHandler = new IPCHandler();
-            console.log('IPC处理器初始化完成');
+            logTiming('IPC处理器初始化完成');
             
             // 异步初始化应用状态管理器
+            logTiming('开始初始化应用状态管理器');
             appStateManager = ipcHandler.getAppState();
             await appStateManager.initialize();
-            console.log('应用状态管理器初始化完成');
+            logTiming('应用状态管理器初始化完成');
             
             // 设置窗口管理器到应用状态
             appStateManager.setMainWindow(windowManager.getMainWindow());

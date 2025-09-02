@@ -120,10 +120,15 @@ class AppStateManager {
 
             // 如果设置文件存在，异步加载它
             if (fs.existsSync(this.settingsPath)) {
-                const settingsData = await fs.promises.readFile(this.settingsPath, 'utf8');
-                const savedSettings = JSON.parse(settingsData);
-                // 合并默认设置和保存的设置
-                return { ...this.loadDefaultSettings(), ...savedSettings };
+                try {
+                    const settingsData = await fs.promises.readFile(this.settingsPath, 'utf8');
+                    const savedSettings = JSON.parse(settingsData);
+                    // 合并默认设置和保存的设置
+                    return { ...this.loadDefaultSettings(), ...savedSettings };
+                } catch (parseError) {
+                    console.warn('设置文件解析失败，使用默认设置:', parseError.message);
+                    return this.loadDefaultSettings();
+                }
             }
         } catch (error) {
             console.error('异步加载设置失败:', error);
@@ -142,11 +147,12 @@ class AppStateManager {
                 fs.mkdirSync(dataDir, { recursive: true });
             }
 
-            // 异步保存设置到文件
-            await fs.promises.writeFile(this.settingsPath, JSON.stringify(this.settings, null, 2), 'utf8');
-            console.log('设置已异步保存到:', this.settingsPath);
+            // 异步保存设置到文件，但不等待完成
+            fs.promises.writeFile(this.settingsPath, JSON.stringify(this.settings, null, 2), 'utf8')
+                .then(() => console.log('设置已异步保存到:', this.settingsPath))
+                .catch((error) => console.error('异步保存设置失败:', error));
         } catch (error) {
-            console.error('异步保存设置失败:', error);
+            console.error('准备保存设置失败:', error);
         }
     }
 

@@ -19,7 +19,10 @@ class WindowManager {
                 contextIsolation: true,
                 nodeIntegration: false,
                 enableRemoteModule: false,
-                webSecurity: true
+                webSecurity: true,
+                // 优化性能设置
+                backgroundThrottling: false,
+                enableWebSQL: false
             },
             show: false, // 先不显示，等内容加载完成后再显示
             titleBarStyle: 'default',
@@ -29,7 +32,7 @@ class WindowManager {
         // 设置窗口标题
         this.mainWindow.setTitle('Ciphora | 安全密码管理器');
 
-        // 在开发模式下加载 Vite 开发服务器，在生产模式下加载本地文件
+        // 立即开始加载内容
         this.loadContent();
 
         // 窗口事件处理
@@ -67,6 +70,7 @@ class WindowManager {
             }
         } else {
             console.log('生产模式运行，加载构建后的文件');
+            // 使用更快的文件加载方式
             this.mainWindow.loadFile(path.join(__dirname, '../../dist/index.html'));
         }
     }
@@ -74,6 +78,7 @@ class WindowManager {
     setupWindowEvents() {
         // 窗口准备好显示时
         this.mainWindow.once('ready-to-show', () => {
+            // 立即显示窗口
             this.mainWindow.show();
             this.mainWindow.focus();
         });
