@@ -76,7 +76,14 @@ jobs:
           chmod +x node_modules/app-builder-bin/linux/ia32/app-builder || true
 
       - name: Build Electron app
-        run: yarn electron:build
+        run: |
+          if [ "${{ matrix.platform }}" = "win" ]; then
+            yarn electron-builder --${{ matrix.platform }} --${{ matrix.arch }} --publish=never
+          elif [ "${{ matrix.platform }}" = "mac" ]; then
+            yarn electron-builder --${{ matrix.platform }} --${{ matrix.arch }} --publish=never
+          elif [ "${{ matrix.platform }}" = "linux" ]; then
+            yarn electron-builder --${{ matrix.platform }} --${{ matrix.arch }} --publish=never
+          fi
         env:
           ELECTRON_BUILDER_ALLOW_UNRESOLVED_DEPENDENCIES: true
           ELECTRON_BUILDER_CACHE: /tmp/electron-builder-cache
