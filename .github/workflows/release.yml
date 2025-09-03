@@ -54,13 +54,24 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
-      - name: Build frontend
+      - name: Build frontend (Unix)
+        if: runner.os != 'Windows'
+        shell: bash
         run: |
           # 从 Git tag 获取版本号
           VERSION=${GITHUB_REF#refs/tags/}
           VERSION=${VERSION#v}
           echo "Building version: $VERSION"
           VERSION=$VERSION yarn build:prod
+
+      - name: Build frontend (Windows)
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: |
+          # 从 Git tag 获取版本号
+          $VERSION = "${{ github.ref }}" -replace "refs/tags/", "" -replace "^v", ""
+          Write-Host "Building version: $VERSION"
+          $env:VERSION = $VERSION; yarn build:prod
 
       - name: Fix app-builder permissions
         if: matrix.platform == 'linux'

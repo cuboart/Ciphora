@@ -14,6 +14,7 @@
         "electron:start": "electron .",
         "electron:build": "node scripts/update-version.js && npm run build:prod && electron-builder --publish=never",
         "build:all": "npm run build:prod && electron-builder --win --mac --linux",
+        "build:win": "npm run build:prod && electron-builder --win --publish=never",
         "build:win:32": "npm run build:prod && electron-builder --win --ia32",
         "build:win:64": "npm run build:prod && electron-builder --win --x64",
         "build:mac:arm64": "npm run build:prod && electron-builder --mac --arm64",
