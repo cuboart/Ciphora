@@ -45,16 +45,16 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "18"
-          cache: "npm"
+          cache: "yarn"
 
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --frozen-lockfile
 
       - name: Build frontend
-        run: npm run vite:build
+        run: yarn build
 
       - name: Build Electron app
-        run: npm run electron:build
+        run: yarn electron:build
         env:
           ELECTRON_BUILDER_ALLOW_UNRESOLVED_DEPENDENCIES: true
 
