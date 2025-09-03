@@ -64,6 +64,7 @@ jobs:
         env:
           ELECTRON_BUILDER_ALLOW_UNRESOLVED_DEPENDENCIES: true
           ELECTRON_BUILDER_CACHE: /tmp/electron-builder-cache
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
