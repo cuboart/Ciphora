@@ -53,10 +53,17 @@ jobs:
       - name: Build frontend
         run: yarn build
 
+      - name: Fix app-builder permissions
+        if: matrix.platform == 'linux'
+        run: |
+          chmod +x node_modules/app-builder-bin/linux/x64/app-builder || true
+          chmod +x node_modules/app-builder-bin/linux/ia32/app-builder || true
+
       - name: Build Electron app
         run: yarn electron:build
         env:
           ELECTRON_BUILDER_ALLOW_UNRESOLVED_DEPENDENCIES: true
+          ELECTRON_BUILDER_CACHE: /tmp/electron-builder-cache
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
