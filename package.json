@@ -11,7 +11,7 @@
         "preview": "vite preview",
         "electron:dev": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && electron .\"",
         "electron:start": "electron .",
-        "electron:build": "npm run build && electron-builder",
+        "electron:build": "npm run build && electron-builder --publish=never",
         "build:all": "npm run build && electron-builder --win --mac --linux",
         "build:win:32": "npm run build && electron-builder --win --ia32",
         "build:win:64": "npm run build && electron-builder --win --x64",
@@ -105,10 +105,10 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/your-username/ciphora"
+        "url": "https://github.com/cuboart/Ciphora"
     },
     "bugs": {
-        "url": "https://github.com/your-username/ciphora/issues"
+        "url": "https://github.com/cuboart/Ciphora/issues"
     },
-    "homepage": "https://github.com/your-username/ciphora"
+    "homepage": "https://github.com/cuboart/Ciphora"
 }
