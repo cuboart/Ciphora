@@ -69,6 +69,7 @@
         "directories": {
             "output": "release"
         },
+        "icon": "res/logo.png",
         "files": [
             "main.cjs",
             "server",
@@ -87,12 +88,12 @@
         },
         "mac": {
             "target": "dmg",
-            "icon": "res/logo.icns",
+            "icon": "res/logo.png",
             "category": "public.app-category.productivity"
         },
         "linux": {
             "target": "AppImage",
-            "icon": "res/logo.ico",
+            "icon": "res/logo.png",
             "category": "Utility"
         },
         "nsis": {
