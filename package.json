@@ -8,21 +8,22 @@
         "start": "electron .",
         "dev": "vite",
         "build": "vite build",
+        "build:prod": "node scripts/update-version.js && vite build",
         "preview": "vite preview",
         "electron:dev": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && electron .\"",
         "electron:start": "electron .",
-        "electron:build": "npm run build && electron-builder --publish=never",
-        "build:all": "npm run build && electron-builder --win --mac --linux",
-        "build:win:32": "npm run build && electron-builder --win --ia32",
-        "build:win:64": "npm run build && electron-builder --win --x64",
-        "build:mac:arm64": "npm run build && electron-builder --mac --arm64",
-        "build:mac:x64": "npm run build && electron-builder --mac --x64",
-        "build:linux:32": "npm run build && electron-builder --linux --ia32",
-        "build:linux:64": "npm run build && electron-builder --linux --x64",
-        "release": "npm run build && electron-builder --win --mac --linux --publish=never",
-        "release:win": "npm run build && electron-builder --win --publish=never",
-        "release:mac": "npm run build && electron-builder --mac --publish=never",
-        "release:linux": "npm run build && electron-builder --linux --publish=never",
+        "electron:build": "node scripts/update-version.js && npm run build:prod && electron-builder --publish=never",
+        "build:all": "npm run build:prod && electron-builder --win --mac --linux",
+        "build:win:32": "npm run build:prod && electron-builder --win --ia32",
+        "build:win:64": "npm run build:prod && electron-builder --win --x64",
+        "build:mac:arm64": "npm run build:prod && electron-builder --mac --arm64",
+        "build:mac:x64": "npm run build:prod && electron-builder --mac --x64",
+        "build:linux:32": "npm run build:prod && electron-builder --linux --ia32",
+        "build:linux:64": "npm run build:prod && electron-builder --linux --x64",
+        "release": "npm run build:prod && electron-builder --win --mac --linux --publish=never",
+        "release:win": "npm run build:prod && electron-builder --win --publish=never",
+        "release:mac": "npm run build:prod && electron-builder --mac --publish=never",
+        "release:linux": "npm run build:prod && electron-builder --linux --publish=never",
         "clean": "rimraf dist release",
         "test:startup": "node scripts/test-startup.js"
     },
@@ -34,7 +35,7 @@
         "electron",
         "cross-platform"
     ],
-    "author": "Ciphora Team",
+    "author": "cuboart <cubo@binrc.com>",
     "license": "MIT",
     "devDependencies": {
         "@tailwindcss/postcss": "^4.1.12",
@@ -105,10 +106,10 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/cuboart/Ciphora"
+        "url": "https://github.com/binrc/Ciphora"
     },
     "bugs": {
-        "url": "https://github.com/cuboart/Ciphora/issues"
+        "url": "https://github.com/binrc/Ciphora/issues"
     },
-    "homepage": "https://github.com/cuboart/Ciphora"
+    "homepage": "https://github.com/binrc/Ciphora"
 }

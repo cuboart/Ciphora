@@ -12,33 +12,51 @@
 
 Ciphora 是一个开源、安全、跨平台的密码管理器，基于 Electron 和 React 构建。它提供了强大的密码管理功能，支持多种数据类型存储、加密备份、多因素认证等企业级安全特性。
 
+**主要优势：**
+- 🔐 企业级安全加密
+- 📱 多数据类型支持
+- 🔄 自动备份恢复
+- 🎨 现代化用户界面
+
+## 📋 项目信息
+
+| 🏢 开发组织 | 👨‍💻 开发人员 | 📧 联系邮箱 |
+|-------------|---------------|-------------|
+| [binrchq](https://github.com/binrchq) | [cuboart](https://github.com/cuboart) | [cubo@binrc.com](mailto:cubo@binrc.com) |
+
 ### 🖼️ 界面展示
 
 <div align="center">
 
-| 登录界面 | 密码管理 |
-|--------|----------|
-| <img src="./readme_res/d793f7c0-259d-4901-8a9a-3f428743a0ba.png" alt="登录界面"> | <img src="./readme_res/41ae95d8-944c-48d6-b360-b5314f80b422.png" alt="密码管理"> |
-| 简洁直观的登录管理体验 | 直观的密码列表和操作界面 |
+#### 核心功能界面
 
-| 控制面板 | 设置界面 |
-|----------|----------|
-|  <img src="./readme_res/e4cab2de-bcb0-4d33-865a-814290f05c9d.png" alt="支持项目"> |<img src="./readme_res/38fe97b6-a6b3-4991-bc0a-6fc6fdf8ff9e.png" alt="设置界面">  |
-| 简洁的备份和导出功能 | 丰富的配置选项和个性化设置 |
+| 功能 | 截图 | 描述 |
+|------|------|------|
+| **登录界面** | <img src="./readme_res/d793f7c0-259d-4901-8a9a-3f428743a0ba.png" alt="登录界面" width="200"> | 简洁直观的登录管理体验 |
+| **密码管理** | <img src="./readme_res/41ae95d8-944c-48d6-b360-b5314f80b422.png" alt="密码管理" width="200"> | 直观的密码列表和操作界面 |
+
+#### 管理功能界面
+
+| 功能 | 截图 | 描述 |
+|------|------|------|
+| **控制面板** | <img src="./readme_res/e4cab2de-bcb0-4d33-865a-814290f05c9d.png" alt="控制面板" width="200"> | 简洁的备份和导出功能 |
+| **设置界面** | <img src="./readme_res/38fe97b6-a6b3-4991-bc0a-6fc6fdf8ff9e.png" alt="设置界面" width="200"> | 丰富的配置选项和个性化设置 |
 
 </div>
 
 ### ✨ 主要特性
 
-- 🔐 **安全加密**：采用 AES-256 加密算法保护您的数据
-- 🎯 **多数据类型**：支持密码、Base64、笔记、TOTP,Json 等多种数据类型
-- 🔄 **自动备份**：支持加密备份和恢复功能
-- 📱 **多因素认证**：内置 TOTP 支持，增强账户安全
-- 🎨 **现代界面**：基于 Tailwind CSS 的美观用户界面
-- 🔍 **智能搜索**：快速查找和管理您的密码
-- 📊 **密码生成器**：可自定义的强密码生成工具
-- 🔒 **自动锁定**：可配置的空闲自动锁定功能
-- 📤 **导入导出**：支持多种格式的数据导入导出
+| 功能 | 描述 |
+|------|------|
+| 🔐 **安全加密** | 采用 AES-256 加密算法保护您的数据 |
+| 🎯 **多数据类型** | 支持密码、Base64、笔记、TOTP、Json 等多种数据类型 |
+| 🔄 **自动备份** | 支持加密备份和恢复功能 |
+| 📱 **多因素认证** | 内置 TOTP 支持，增强账户安全 |
+| 🎨 **现代界面** | 基于 Tailwind CSS 的美观用户界面 |
+| 🔍 **智能搜索** | 快速查找和管理您的密码 |
+| 📊 **密码生成器** | 可自定义的强密码生成工具 |
+| 🔒 **自动锁定** | 可配置的空闲自动锁定功能 |
+| 📤 **导入导出** | 支持多种格式的数据导入导出 |
 
 ## 🚀 快速开始
 
@@ -64,18 +82,18 @@ git clone https://github.com/cuboart/Ciphora.git
 cd Ciphora
 
 # 安装依赖
-npm install
+yarn install
 
 # 开发模式运行
-npm run dev
+yarn dev
 
 # 构建应用
-npm run build
+yarn build
 
 # 构建特定平台
-npm run build:win    # Windows
-npm run build:mac    # macOS  
-npm run build:linux  # Linux
+yarn build:win    # Windows
+yarn build:mac    # macOS  
+yarn build:linux  # Linux
 ```
 
 ## 📱 使用指南
@@ -132,38 +150,47 @@ npm run build:linux  # Linux
 
 ## ⚙️ 设置选项
 
-
 ### 安全设置
-- **自动锁定**：默认30分钟空闲后自动锁定
-- **隐藏敏感按钮**：默认隐藏删除等危险操作按钮
-- **显示密码强度**：密码输入时显示强度指示器
+| 功能 | 默认值 | 说明 |
+|------|--------|------|
+| **自动锁定** | 30分钟 | 空闲后自动锁定应用 |
+| **隐藏敏感按钮** | 开启 | 隐藏删除等危险操作按钮 |
+| **显示密码强度** | 开启 | 密码输入时显示强度指示器 |
 
 ### 密码生成器设置
-- **默认长度**：设置默认生成密码长度
-- **字符选项**：配置包含的字符类型
-- **排除相似字符**：默认排除容易混淆的字符（0O1lI）
+| 功能 | 默认值 | 说明 |
+|------|--------|------|
+| **默认长度** | 16位 | 设置默认生成密码长度 |
+| **字符选项** | 全选 | 配置包含的字符类型 |
+| **排除相似字符** | 开启 | 排除容易混淆的字符（0O1lI） |
 
 ### 界面设置
-- **主题**：系统、浅色、深色主题
-- **紧凑模式**：减少界面间距
-- **隐藏敏感按钮**：默认开启，提高安全性
+| 功能 | 默认值 | 说明 |
+|------|--------|------|
+| **主题** | 系统 | 系统、浅色、深色主题 |
+| **紧凑模式** | 关闭 | 减少界面间距 |
+| **隐藏敏感按钮** | 开启 | 默认开启，提高安全性 |
 
 ## 🔒 安全特性
 
 ### 加密机制
-- **主密码**：使用 PBKDF2 派生密钥
-- **数据加密**：AES-256-GCM 加密算法
-- **安全存储**：本地加密存储，不上传云端
+| 项目 | 技术 | 说明 |
+|------|------|------|
+| **主密码** | PBKDF2 | 使用 PBKDF2 派生密钥 |
+| **数据加密** | AES-256-GCM | AES-256-GCM 加密算法 |
+| **安全存储** | 本地加密 | 本地加密存储，不上传云端 |
 
 ### 数据存储位置
-- **Windows**: `%APPDATA%/Ciphora/`
-- **macOS**: `~/Library/Application Support/Ciphora/`
-- **Linux**: `~/.config/Ciphora/`
+| 平台 | 路径 | 说明 |
+|------|------|------|
+| **Windows** | `%APPDATA%/Ciphora/` | 应用数据目录 |
+| **macOS** | `~/Library/Application Support/Ciphora/` | 应用支持目录 |
+| **Linux** | `~/.config/Ciphora/` | 配置文件目录 |
 
-所有用户数据（密码、设置、备份等）都存储在用户数据目录中，确保：
-- 应用更新时数据不会丢失
-- 符合各操作系统的数据存储规范
-- 具有适当的权限控制
+**数据安全保障：**
+- ✅ 应用更新时数据不会丢失
+- ✅ 符合各操作系统的数据存储规范
+- ✅ 具有适当的权限控制
 
 ### 忘记主密码的解决方案
 
@@ -197,42 +224,46 @@ npm run build:linux  # Linux
 ## 🛠️ 开发指南
 
 ### 技术栈
-- **前端**：React 18 + Tailwind CSS
-- **后端**：Node.js + Electron
-- **加密**：crypto-js
-- **构建**：Vite + Electron Builder
+
+| 层级 | 技术 | 说明 |
+|------|------|------|
+| **前端** | React 18 + Tailwind CSS | 现代化用户界面 |
+| **后端** | Node.js + Electron | 跨平台桌面应用 |
+| **加密** | crypto-js | 数据安全保护 |
+| **构建** | Vite + Electron Builder | 快速构建打包 |
 
 ### 项目结构
+
 ```
 Ciphora/
 ├── src/                    # 前端源码
-│   ├── components/         # React 组件
-│   ├── lib/               # 工具库
-│   └── index.jsx          # 入口文件
+│   ├── components/        # React 组件
+│   ├── lib/              # 工具库
+│   └── index.jsx         # 入口文件
 ├── server/                # 后端服务
-│   ├── services/          # 业务逻辑
-│   ├── config/            # 配置文件
-│   └── utils/             # 工具函数
+│   ├── services/         # 业务逻辑
+│   ├── config/           # 配置文件
+│   └── utils/            # 工具函数
 ├── res/                   # 资源文件
-├── main.cjs               # Electron 主进程
-└── preload.js             # 预加载脚本
+├── main.cjs              # Electron 主进程
+└── preload.js            # 预加载脚本
 ```
 
 ### 开发命令
 ```bash
 # 开发模式
-npm run dev
+yarn dev
 
 # 构建应用
-npm run build
+yarn build
 
 # 构建特定平台
-npm run build-win    # Windows
-npm run build-mac    # macOS
-npm run build-linux  # Linux
+yarn build:win    # Windows
+yarn build:mac    # macOS
+yarn build:linux  # Linux
 
 # 代码检查
-npm run lint
+yarn lint
 ```
 
 ## 🤝 贡献指南
@@ -268,38 +299,37 @@ npm run lint
 
 - 🐛 **Bug 报告**：[Issues](https://github.com/cuboart/Ciphora/issues)
 - 💡 **功能建议**：[Discussions](https://github.com/cuboart/Ciphora/discussions)
-- 📧 **联系邮箱**：support@ciphora.app
+- 📧 **联系邮箱**：[cubo@binrc.com](mailto:cubo@binrc.com)
 
 ## 💝 支持项目
 
 如果 Ciphora 对您有帮助，欢迎支持我们的开发工作：
 
-<div align="center">
-  <p>🌸一朵花 ¥1 | 🍋柠檬水 ¥5 | 🧋奶茶 ¥12 | 🍽️午饭 ¥25 | 自定义 ¥?</p>
-  
-  <p>请我喝杯咖啡，继续完善功能 ☕</p>
-  
-  <table>
-    <tr>
-      <td align="center">
-        <img src="./res/wechatpay.png" alt="微信支付" width="150" height="150">
-        <br>
-        <strong>微信支付</strong>
-      </td>
-      <td align="center">
-        <img src="./res/alipay.png" alt="支付宝" width="150" height="150">
-        <br>
-        <strong>支付宝</strong>
-      </td>
-    </tr>
-  </table>
-  
-  <p>感谢您的支持！❤️</p>
-</div>
+### 支持等级
+| 等级 | 金额 | 说明 |
+|------|------|------|
+| 🌸 一朵花 | ¥1 | 小小的鼓励 |
+| 🍋 柠檬水 | ¥5 | 清爽的提神 |
+| 🧋 奶茶 | ¥12 | 甜蜜的享受 |
+| 🍽️ 午饭 | ¥25 | 丰盛的午餐 |
+| 🎯 自定义 | ¥? | 随心所欲 |
+
+### 支付方式
+
+| 微信支付 | 支付宝 |
+|----------|--------|
+| <img src="./res/wechatpay.png" alt="微信支付" width="150" height="170"><br>**微信支付** | <img src="./res/alipay.png" alt="支付宝" width="150" height="170"><br>**支付宝** |
+
+> 💡 感谢您的支持！每一份支持都是我们继续完善的动力。
 
 ---
 
 <div align="center">
-  <p>Made with ❤️ by Ciphora Team</p>
-  <p>⭐ Star this repository if you like it!</p>
+
+**Made with ❤️ by [cuboart](https://github.com/cuboart)**
+
+📧 **Contact**: [cubo@binrc.com](mailto:cubo@binrc.com)
+
+⭐ **Star this repository if you like it!**
+
 </div>
