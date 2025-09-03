@@ -1,6 +1,6 @@
 {
     "name": "ciphora",
-    "version": "1.2.0",
+    "version": "1.2.6",
     "type": "module",
     "description": "Ciphora - 安全密码管理器，支持MFA、Base64数据存储和加密备份",
     "main": "main.cjs",
@@ -86,17 +86,20 @@
         "win": {
             "target": "nsis",
             "icon": "res/logo.ico",
-            "requestedExecutionLevel": "asInvoker"
+            "requestedExecutionLevel": "asInvoker",
+            "artifactName": "${productName}-${version}-${arch}.${ext}"
         },
         "mac": {
             "target": "dmg",
             "icon": "res/logo.png",
-            "category": "public.app-category.productivity"
+            "category": "public.app-category.productivity",
+            "artifactName": "${productName}-${version}-${arch}.${ext}"
         },
         "linux": {
             "target": "AppImage",
             "icon": "res/logo.png",
-            "category": "Utility"
+            "category": "Utility",
+            "artifactName": "${productName}-${version}-${arch}.${ext}"
         },
         "nsis": {
             "oneClick": false,

@@ -28,10 +28,6 @@ jobs:
             platform: linux
             arch: x64
             target: AppImage
-          - os: ubuntu-latest
-            platform: linux
-            arch: ia32
-            target: AppImage
           - os: macos-latest
             platform: mac
             arch: x64
@@ -89,7 +85,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: ${{ matrix.platform }}-${{ matrix.arch }}-${{ matrix.target }}
+          name: ${{ matrix.platform }}-${{ matrix.arch }}-${{ matrix.target }}-${{ github.ref_name }}-${{ github.run_number }}
           path: |
             release/*.exe
             release/*.dmg
@@ -125,6 +121,5 @@ jobs:
           draft: false
           prerelease: false
           generate_release_notes: true
-          overwrite: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

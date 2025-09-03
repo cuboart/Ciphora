@@ -172,7 +172,12 @@ const TOTPDisplay = ({ secret, issuer = 'Ciphora', accountName = 'Account' }) =>
 
             <div className="text-xs text-gray-500 text-center bg-gray-50 rounded-lg p-2">
                 <div className="font-medium">验证码每 30 秒更新一次</div>
-                <div className="text-gray-400 text-xs">适用于 {issuer} - {accountName}</div>
+                <div className="text-gray-400 text-xs">
+                    {issuer !== 'Ciphora' || accountName !== 'Account'
+                        ? `适用于 ${issuer} - ${accountName}`
+                        : '请确保时间同步准确'
+                    }
+                </div>
             </div>
         </div>
     );

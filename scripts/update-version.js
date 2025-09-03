@@ -13,8 +13,9 @@ const __dirname = path.dirname(__filename);
 // 2. Git tag (如果存在)
 // 3. package.json 中的版本号
 function getVersion() {
-    // 检查环境变量
+    // 检查环境变量（优先级最高）
     if (process.env.VERSION) {
+        console.log(`Using version from environment variable: ${process.env.VERSION}`);
         return process.env.VERSION;
     }
     
@@ -60,6 +61,13 @@ function getVersion() {
 
 const version = getVersion();
 console.log(`Updating version to: ${version}`);
+
+// 动态更新 package.json 中的版本号
+const packageJsonPath = path.join(__dirname, '..', 'package.json');
+const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
+packageJson.version = version;
+fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2) + '\n', 'utf8');
+console.log(`Updated package.json version to: ${version}`);
 
 // 读取 SettingsView.jsx
 const settingsViewPath = path.join(__dirname, '..', 'src', 'components', 'SettingsView.jsx');

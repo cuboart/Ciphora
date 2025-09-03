@@ -365,7 +365,11 @@ const PasswordCard = ({ password, onEdit, onDelete, className = "", hideSensitiv
                                 二维码
                             </button>
                         </div>
-                        <TOTPDisplay secret={password.secret} />
+                        <TOTPDisplay 
+                            secret={password.secret}
+                            issuer={password.website || 'Ciphora'}
+                            accountName={password.username || 'Account'}
+                        />
 
                         {/* 二维码显示 */}
                         {showQRCode && (

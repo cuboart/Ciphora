@@ -552,7 +552,7 @@ const SettingsView = ({ onBack, onLogout }) => {
                             className="text-sm text-blue-600 hover:text-blue-800 underline"
                         >
                             https://github.com/cuboart/Ciphora
-                        </a> 版本: v1.2.1 | 开源协议: MIT
+                        </a> 版本: v1.2.6 | 开源协议: MIT
                     </div>
                 </div>
 
