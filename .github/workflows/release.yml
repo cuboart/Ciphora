@@ -91,8 +91,14 @@ jobs:
         with:
           name: ${{ matrix.platform }}-${{ matrix.arch }}-${{ matrix.target }}
           path: |
-            release/
-            dist/
+            release/*.exe
+            release/*.dmg
+            release/*.AppImage
+            release/*.deb
+            release/*.rpm
+            release/*.snap
+            release/*.zip
+            release/*.tar.gz
           retention-days: 30
 
   create-release:
